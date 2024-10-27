@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS ft_jobdata (
     code_postal VARCHAR(10),
     latitude DECIMAL(9, 6),
     longitude DECIMAL(9, 6),
-    description TEXT,
     date_creation DATE,
     date_actualization DATE,
     contract_type VARCHAR(50),
