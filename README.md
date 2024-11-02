@@ -44,7 +44,3 @@ The data updater functionality is located in this [GitHub repository](https://gi
 You can monitor the AWS services and the performance of the application using AWS CloudWatch. Logs for the Lambda functions and other services can be found in the CloudWatch dashboard.
 
 
-## Acknowledgments
-
-- [Streamlit](https://streamlit.io/) for providing an easy-to-use framework for building interactive web applications.
-- AWS for offering a wide range of cloud services that facilitate data processing and storage.
