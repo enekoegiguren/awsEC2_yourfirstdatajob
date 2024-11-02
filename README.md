@@ -2,6 +2,9 @@
 
 ## Streamlit Data Analysis App
 
+![Alt text](https://github.com/enekoegiguren/awsEC2_yourfirstdatajob/blob/main/awsEC2_yourfirstdatajob.jpg)
+
+
 ## Overview
 
 This project is a Streamlit application designed to analyze data related to the job market in France. The app leverages various AWS services for data extraction, transformation, and storage, providing users with insights into job categories, salary trends, and required skills.
