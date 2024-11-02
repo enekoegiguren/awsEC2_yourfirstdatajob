@@ -17,7 +17,7 @@ def connect_to_db():
 # Fetch data from the database using SQLAlchemy connection
 def fetch_data():
     engine = connect_to_db()
-    query = "SELECT * FROM ft_jobdata"
+    query = "SELECT * FROM ft_jobdata where avg_salary < 200000"
     data = pd.read_sql(query, engine)
     engine.dispose()  # Properly close the connection
     return data
@@ -28,11 +28,6 @@ def format_salary(value):
 
 # Fetch data
 data = fetch_data()
-
-# Sidebar for Page Navigation
-st.sidebar.title("Navigation")
-st.sidebar.markdown("[Main](./)")
-st.sidebar.markdown("[Analysis](./pages/analysis.py)")
 
 # ---- Main Page Content ----
 st.title("Job Opportunities Analysis - Main")
@@ -89,12 +84,11 @@ with col4:
 # ---- Most Demanded Job Categories Section ----
 st.write("### Most Demanded Job Categories")
 if not filtered_data.empty:
-    most_demanded_jobs = filtered_data['job_category'].value_counts().head(10)
+    most_demanded_jobs = filtered_data['job_category'].value_counts().sort_values(ascending=False).head(10)
     st.bar_chart(most_demanded_jobs)
 else:
     st.write("No data available for the selected filters.")
 
-# ---- Map with Circle Markers ----
 st.write("### Job Locations Map")
 if not filtered_data.empty:
     job_counts = filtered_data.groupby(['latitude', 'longitude']).size().reset_index(name='job_count')
@@ -108,6 +102,11 @@ if not filtered_data.empty:
         zoom=5,
         mapbox_style="carto-positron",
         title="Job Density in France"
+    )
+    fig.update_layout(
+        autosize=False,
+        width=1000,  # Set the width you prefer
+        height=700   # Set the height you prefer
     )
     st.plotly_chart(fig)
 else:
